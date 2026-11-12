@@ -13,20 +13,6 @@ from typing import List
 import uuid
 from datetime import datetime, timezone
 
-from fastapi.middleware.cors import CORSMiddleware
-
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=[
-        "https://saachiinfosofttechnology.netlify.app",
-        "http://localhost:3000",
-        "http://localhost:5173"
-    ],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
-
 ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
 
@@ -45,8 +31,21 @@ db = client[os.environ['DB_NAME']]
 # Set Resend API Key
 resend.api_key = os.environ.get("RESEND_API_KEY")
 
-# Create the main app without a prefix
+# Create the main app
 app = FastAPI()
+
+# Single, clean CORS Middleware configuration
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[
+        "https://saachiinfosofttechnology.netlify.app",
+        "http://localhost:3000",
+        "http://localhost:5173"
+    ],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # Create a router with the /api prefix
 api_router = APIRouter(prefix="/api")
@@ -194,14 +193,6 @@ async def subscribe_newsletter(input: NewsletterCreate):
 
 # Include the router in the main app
 app.include_router(api_router)
-
-app.add_middleware(
-    CORSMiddleware,
-    allow_credentials=True,
-    allow_origins=os.environ.get('CORS_ORIGINS', '*').split(','),
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
 
 
 @app.on_event("shutdown")
