@@ -49,9 +49,8 @@ export default function Contact() {
 
   const onSubmit = async (values) => {
     try {
-      // Get current host IP/domain and target backend port 8000 directly
-      const hostname = window.location.hostname;
-      const API = `http://${hostname}:8000/api`;
+      // Use environment variable for production backend URL, fallback to localhost for development
+      const API = process.env.REACT_APP_BACKEND_URL || "http://localhost:8000/api";
 
       const res = await fetch(`${API}/contact`, {
         method: "POST",
