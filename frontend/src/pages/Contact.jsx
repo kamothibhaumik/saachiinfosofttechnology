@@ -49,7 +49,6 @@ export default function Contact() {
 
   const onSubmit = async (values) => {
     try {
-      // Use environment variable for production backend URL, fallback to localhost for development
       const API = process.env.REACT_APP_BACKEND_URL || "http://localhost:8000/api";
 
       const res = await fetch(`${API}/contact`, {
@@ -71,72 +70,72 @@ export default function Contact() {
   };
 
   return (
-    <div data-testid="contact-page">
-      <section className="noise relative overflow-hidden pb-14 pt-36 lg:pb-16 lg:pt-44" data-testid="contact-hero">
+    <div data-testid="contact-page" className="overflow-hidden">
+      <section className="noise relative overflow-hidden pb-12 sm:pb-14 pt-32 sm:pt-36 lg:pb-16 lg:pt-44" data-testid="contact-hero">
         <div className="hero-grid absolute inset-0" />
-        <div className="absolute -top-32 left-1/4 h-[420px] w-[420px] rounded-full bg-brand/15 blur-[140px]" />
+        <div className="absolute -top-32 left-1/4 h-[350px] w-[350px] sm:h-[420px] sm:w-[420px] rounded-full bg-brand/15 blur-[120px] sm:blur-[140px]" />
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-12">
           <SectionTag>Contact Us</SectionTag>
-          <h1 className="mt-5 max-w-3xl font-display text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl lg:text-6xl">
+          <h1 className="mt-4 sm:mt-5 max-w-3xl font-display text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900">
             Let's build something{" "}
             <span className="text-gradient-red">exceptional together.</span>
           </h1>
-          <p className="mt-6 max-w-2xl text-base leading-relaxed text-slate-600 sm:text-lg">
+          <p className="mt-4 sm:mt-6 max-w-2xl text-sm sm:text-base lg:text-lg leading-relaxed text-slate-600">
             Tell us about your project we reply within one business day with honest, actionable
             next steps.
           </p>
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 pb-20 sm:px-6 lg:px-12" data-testid="contact-section">
+      <section className="mx-auto max-w-7xl px-4 pb-16 sm:pb-20 sm:px-6 lg:px-12" data-testid="contact-section">
         <div className="grid gap-8 lg:grid-cols-12">
           {/* FORM */}
           <Reveal className="lg:col-span-7">
             <div
-              className="h-full rounded-[2rem] border border-slate-200 bg-white p-7 shadow-[0_2px_12px_-4px_rgba(15,23,42,0.08)] lg:p-10"
+              className="h-full rounded-[2rem] border border-slate-200 bg-white p-6 sm:p-8 lg:p-10 shadow-[0_2px_12px_-4px_rgba(15,23,42,0.08)]"
               data-testid="contact-form-container"
             >
               {submitted ? (
-                <div className="flex h-full min-h-[420px] flex-col items-center justify-center text-center" data-testid="contact-success-state">
-                  <span className="flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-brand to-brand-dark shadow-[0_16px_40px_-10px_rgba(220,38,38,0.6)]">
-                    <CheckCircle2 className="h-10 w-10 text-white" />
+                <div className="flex h-full min-h-[380px] sm:min-h-[420px] flex-col items-center justify-center text-center px-2" data-testid="contact-success-state">
+                  <span className="flex h-16 w-16 sm:h-20 sm:w-20 items-center justify-center rounded-full bg-gradient-to-br from-brand to-brand-dark shadow-[0_16px_40px_-10px_rgba(220,38,38,0.6)]">
+                    <CheckCircle2 className="h-8 w-8 sm:h-10 sm:w-10 text-white" />
                   </span>
-                  <h2 className="mt-7 font-display text-2xl font-bold text-slate-900">Message received!</h2>
-                  <p className="mt-3 max-w-sm text-sm leading-relaxed text-slate-600">
+                  <h2 className="mt-6 sm:mt-7 font-display text-xl sm:text-2xl font-bold text-slate-900">Message received!</h2>
+                  <p className="mt-2.5 sm:mt-3 max-w-sm text-xs sm:text-sm leading-relaxed text-slate-600">
                     Thanks for reaching out — a strategist from our team will get back to you within
                     one business day.
                   </p>
                   <button
                     onClick={() => { setSubmitted(false); reset(); }}
                     data-testid="contact-send-another-button"
-                    className="mt-8 inline-flex items-center gap-2 rounded-full border border-red-300 bg-red-50 px-6 py-3 text-sm font-semibold text-red-600 transition-all hover:bg-red-100"
+                    className="mt-6 sm:mt-8 inline-flex items-center gap-2 rounded-full border border-red-300 bg-red-50 px-6 py-3 text-xs sm:text-sm font-semibold text-red-600 transition-all hover:bg-red-100"
                   >
                     Send another message <Send className="h-4 w-4" />
                   </button>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit(onSubmit)} noValidate>
-                  <h2 className="font-display text-xl font-bold text-slate-900">Start your project</h2>
-                  <p className="mt-1.5 text-sm text-slate-500">Fields marked * are required.</p>
+                  <h2 className="font-display text-lg sm:text-xl font-bold text-slate-900">Start your project</h2>
+                  <p className="mt-1 text-xs sm:text-sm text-slate-500">Fields marked * are required.</p>
 
-                  <div className="mt-8 grid gap-5 sm:grid-cols-2">
+                  <div className="mt-6 sm:mt-8 grid gap-4 sm:gap-5 sm:grid-cols-2">
                     <div>
-                      <label htmlFor="name" className="mb-2 block text-xs font-semibold uppercase tracking-wider text-slate-500">Name *</label>
+                      <label htmlFor="name" className="mb-1.5 sm:mb-2 block text-xs font-semibold uppercase tracking-wider text-slate-500">Name *</label>
                       <input id="name" {...register("name")} data-testid="contact-form-name-input" placeholder="Jane Cooper" className={inputCls} />
                       {errors.name && <p className="mt-1.5 text-xs text-red-600" data-testid="contact-form-name-error">{errors.name.message}</p>}
                     </div>
                     <div>
-                      <label htmlFor="email" className="mb-2 block text-xs font-semibold uppercase tracking-wider text-slate-500">Email *</label>
+                      <label htmlFor="email" className="mb-1.5 sm:mb-2 block text-xs font-semibold uppercase tracking-wider text-slate-500">Email *</label>
                       <input id="email" type="email" {...register("email")} data-testid="contact-form-email-input" placeholder="jane@company.com" className={inputCls} />
                       {errors.email && <p className="mt-1.5 text-xs text-red-600" data-testid="contact-form-email-error">{errors.email.message}</p>}
                     </div>
                     <div>
-                      <label htmlFor="phone" className="mb-2 block text-xs font-semibold uppercase tracking-wider text-slate-500">Phone *</label>
+                      <label htmlFor="phone" className="mb-1.5 sm:mb-2 block text-xs font-semibold uppercase tracking-wider text-slate-500">Phone *</label>
                       <input id="phone" type="tel" {...register("phone")} data-testid="contact-form-phone-input" placeholder="+1 800 555 7222" className={inputCls} />
                       {errors.phone && <p className="mt-1.5 text-xs text-red-600" data-testid="contact-form-phone-error">{errors.phone.message}</p>}
                     </div>
                     <div>
-                      <label className="mb-2 block text-xs font-semibold uppercase tracking-wider text-slate-500">Service Interested In *</label>
+                      <label className="mb-1.5 sm:mb-2 block text-xs font-semibold uppercase tracking-wider text-slate-500">Service Interested In *</label>
                       <Controller
                         name="service"
                         control={control}
@@ -158,7 +157,7 @@ export default function Contact() {
                       {errors.service && <p className="mt-1.5 text-xs text-red-600" data-testid="contact-form-service-error">{errors.service.message}</p>}
                     </div>
                     <div className="sm:col-span-2">
-                      <label htmlFor="message" className="mb-2 block text-xs font-semibold uppercase tracking-wider text-slate-500">Project Details *</label>
+                      <label htmlFor="message" className="mb-1.5 sm:mb-2 block text-xs font-semibold uppercase tracking-wider text-slate-500">Project Details *</label>
                       <textarea id="message" rows={5} {...register("message")} data-testid="contact-form-message-textarea" placeholder="What are you building? What does success look like? Any timeline in mind?" className={`${inputCls} resize-none`} />
                       {errors.message && <p className="mt-1.5 text-xs text-red-600" data-testid="contact-form-message-error">{errors.message.message}</p>}
                     </div>
@@ -168,7 +167,7 @@ export default function Contact() {
                     type="submit"
                     disabled={isSubmitting}
                     data-testid="contact-form-submit-button"
-                    className="group mt-8 inline-flex w-full items-center justify-center gap-2.5 rounded-full bg-gradient-to-r from-brand via-brand-bright to-brand-dark px-8 py-4 text-sm font-bold text-white animate-pulse-glow transition-transform duration-300 hover:scale-[1.02] disabled:opacity-60 sm:w-auto"
+                    className="group mt-7 sm:mt-8 inline-flex w-full items-center justify-center gap-2.5 rounded-full bg-gradient-to-r from-brand via-brand-bright to-brand-dark px-7 sm:px-8 py-3.5 sm:py-4 text-sm font-bold text-white animate-pulse-glow transition-transform duration-300 hover:scale-[1.02] disabled:opacity-60 sm:w-auto"
                   >
                     {isSubmitting ? (
                       <><Loader2 className="h-4 w-4 animate-spin" /> Sending…</>
@@ -176,7 +175,7 @@ export default function Contact() {
                       <>Send Message <Send className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" /></>
                     )}
                   </button>
-                  <p className="mt-4 text-xs text-slate-400">
+                  <p className="mt-3.5 sm:mt-4 text-[11px] sm:text-xs text-slate-400">
                     By submitting, you agree to be contacted about your project. We never share your data.
                   </p>
                 </form>
@@ -185,7 +184,7 @@ export default function Contact() {
           </Reveal>
 
           {/* INFO CARDS */}
-          <div className="space-y-5 lg:col-span-5">
+          <div className="space-y-4 sm:space-y-5 lg:col-span-5">
             {INFO_CARDS.map((c, i) => {
               const Wrapper = c.href ? "a" : "div";
               return (
@@ -193,14 +192,14 @@ export default function Contact() {
                   <Wrapper
                     {...(c.href ? { href: c.href, target: c.href.startsWith("http") ? "_blank" : undefined, rel: "noopener noreferrer" } : {})}
                     data-testid={`contact-info-card-${c.id}`}
-                    className="group flex items-center gap-4 rounded-2xl border border-slate-200 bg-white p-5 shadow-[0_2px_12px_-4px_rgba(15,23,42,0.08)] transition-all duration-300 hover:-translate-y-1 hover:border-red-300 hover:shadow-[0_16px_40px_-16px_rgba(220,38,38,0.3)]"
+                    className="group flex items-center gap-4 rounded-2xl border border-slate-200 bg-white p-4 sm:p-5 shadow-[0_2px_12px_-4px_rgba(15,23,42,0.08)] transition-all duration-300 hover:-translate-y-1 hover:border-red-300 hover:shadow-[0_16px_40px_-16px_rgba(220,38,38,0.3)]"
                   >
-                    <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-brand to-brand-dark text-white shadow-[0_8px_24px_rgba(220,38,38,0.3)]">
+                    <span className="flex h-11 w-11 sm:h-12 sm:w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-brand to-brand-dark text-white shadow-[0_8px_24px_rgba(220,38,38,0.3)]">
                       <c.icon className="h-5 w-5" />
                     </span>
-                    <div>
-                      <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-400">{c.label}</p>
-                      <p className="mt-1 text-[15px] font-semibold text-slate-900">{c.value}</p>
+                    <div className="min-w-0 flex-1">
+                      <p className="font-mono text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-400">{c.label}</p>
+                      <p className="mt-0.5 sm:mt-1 text-sm sm:text-[15px] font-semibold text-slate-900 truncate">{c.value}</p>
                     </div>
                   </Wrapper>
                 </Reveal>
@@ -209,8 +208,8 @@ export default function Contact() {
 
             <Reveal delay={0.35}>
               <div className="relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-2 shadow-[0_2px_12px_-4px_rgba(15,23,42,0.08)]">
-                <img src={IMAGES.team} alt="Saachi Infosoft office" className="h-44 w-full rounded-[1.2rem] object-cover" loading="lazy" />
-                <p className="py-3 pl-3 text-sm font-medium text-slate-900">
+                <img src={IMAGES.team} alt="Saachi Infosoft office" className="h-40 sm:h-44 w-full rounded-[1.2rem] object-cover" loading="lazy" />
+                <p className="py-2.5 sm:py-3 pl-3 text-xs sm:text-sm font-medium text-slate-900">
                   Remote-first studio · Clients across 3 continents
                 </p>
               </div>
@@ -220,15 +219,15 @@ export default function Contact() {
       </section>
 
       {/* FAQ */}
-      <section className="border-t border-slate-900/[0.07] bg-white py-20 lg:py-28" data-testid="faq-section">
-        <div className="mx-auto grid max-w-7xl gap-12 px-4 sm:px-6 lg:grid-cols-12 lg:px-12">
+      <section className="border-t border-slate-900/[0.07] bg-white py-16 sm:py-20 lg:py-28" data-testid="faq-section">
+        <div className="mx-auto grid max-w-7xl gap-10 lg:gap-12 px-4 sm:px-6 lg:grid-cols-12 lg:px-12">
           <div className="lg:col-span-5">
             <Reveal>
               <SectionTag>FAQ</SectionTag>
-              <h2 className="mt-4 font-display text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl lg:text-4xl">
+              <h2 className="mt-3 sm:mt-4 font-display text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl lg:text-4xl">
                 Questions, answered honestly.
               </h2>
-              <p className="mt-4 text-base leading-relaxed text-slate-600">
+              <p className="mt-3 sm:mt-4 text-sm sm:text-base leading-relaxed text-slate-600">
                 Everything clients usually ask before their first call. Something missing? Email us at{" "}
                 <a href={`mailto:${CONTACT.email}`} className="font-medium text-brand hover:underline">
                   {CONTACT.email}
@@ -249,10 +248,10 @@ export default function Contact() {
               ].map((f, i) => (
                 <Reveal key={i} delay={i * 0.05}>
                   <AccordionItem value={`item-${i}`} className="border-slate-200" data-testid={`faq-item-${i}`}>
-                    <AccordionTrigger className="py-5 text-left font-display text-base font-semibold text-slate-900 hover:no-underline hover:text-brand">
+                    <AccordionTrigger className="py-4 sm:py-5 text-left font-display text-sm sm:text-base font-semibold text-slate-900 hover:no-underline hover:text-brand">
                       {f.q}
                     </AccordionTrigger>
-                    <AccordionContent className="pb-5 text-sm leading-relaxed text-slate-600">
+                    <AccordionContent className="pb-4 sm:pb-5 text-xs sm:text-sm leading-relaxed text-slate-600">
                       {f.a}
                     </AccordionContent>
                   </AccordionItem>
