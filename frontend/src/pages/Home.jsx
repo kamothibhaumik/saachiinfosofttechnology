@@ -166,7 +166,7 @@ function HeroVisual() {
               <Rocket className="h-5 w-5" />
             </span>
             <div>
-              <p className="font-display text-lg font-bold leading-none text-slate-900">250+ Projects</p>
+              <p className="font-display text-lg font-bold leading-none text-slate-900">5+ Projects</p>
               <p className="mt-1 text-xs text-slate-500">Delivered worldwide</p>
             </div>
           </div>
