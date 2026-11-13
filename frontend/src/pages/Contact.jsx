@@ -71,9 +71,10 @@ export default function Contact() {
 
   return (
     <div data-testid="contact-page" className="overflow-hidden">
+      {/* HERO SECTION */}
       <section className="noise relative overflow-hidden pb-12 sm:pb-14 pt-32 sm:pt-36 lg:pb-16 lg:pt-44" data-testid="contact-hero">
         <div className="hero-grid absolute inset-0" />
-        <div className="absolute -top-32 left-1/4 h-[350px] w-[350px] sm:h-[420px] sm:w-[420px] rounded-full bg-brand/15 blur-[120px] sm:blur-[140px]" />
+        <div className="absolute -top-32 left-1/4 h-[300px] w-[300px] sm:h-[420px] sm:w-[420px] rounded-full bg-brand/15 blur-[120px] sm:blur-[140px]" />
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-12">
           <SectionTag>Contact Us</SectionTag>
           <h1 className="mt-4 sm:mt-5 max-w-3xl font-display text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900">
@@ -87,16 +88,17 @@ export default function Contact() {
         </div>
       </section>
 
+      {/* FORM & INFO CARDS SECTION */}
       <section className="mx-auto max-w-7xl px-4 pb-16 sm:pb-20 sm:px-6 lg:px-12" data-testid="contact-section">
-        <div className="grid gap-8 lg:grid-cols-12">
+        <div className="grid gap-8 lg:grid-cols-12 items-start">
           {/* FORM */}
           <Reveal className="lg:col-span-7">
             <div
-              className="h-full rounded-[2rem] border border-slate-200 bg-white p-6 sm:p-8 lg:p-10 shadow-[0_2px_12px_-4px_rgba(15,23,42,0.08)]"
+              className="rounded-[2rem] border border-slate-200 bg-white p-5 sm:p-8 lg:p-10 shadow-[0_2px_12px_-4px_rgba(15,23,42,0.08)]"
               data-testid="contact-form-container"
             >
               {submitted ? (
-                <div className="flex h-full min-h-[380px] sm:min-h-[420px] flex-col items-center justify-center text-center px-2" data-testid="contact-success-state">
+                <div className="flex min-h-[380px] sm:min-h-[420px] flex-col items-center justify-center text-center px-2" data-testid="contact-success-state">
                   <span className="flex h-16 w-16 sm:h-20 sm:w-20 items-center justify-center rounded-full bg-gradient-to-br from-brand to-brand-dark shadow-[0_16px_40px_-10px_rgba(220,38,38,0.6)]">
                     <CheckCircle2 className="h-8 w-8 sm:h-10 sm:w-10 text-white" />
                   </span>
@@ -184,7 +186,7 @@ export default function Contact() {
           </Reveal>
 
           {/* INFO CARDS */}
-          <div className="space-y-4 sm:space-y-5 lg:col-span-5">
+          <div className="space-y-4 sm:space-y-5 lg:col-span-5 pb-12 sm:pb-0">
             {INFO_CARDS.map((c, i) => {
               const Wrapper = c.href ? "a" : "div";
               return (
@@ -192,14 +194,14 @@ export default function Contact() {
                   <Wrapper
                     {...(c.href ? { href: c.href, target: c.href.startsWith("http") ? "_blank" : undefined, rel: "noopener noreferrer" } : {})}
                     data-testid={`contact-info-card-${c.id}`}
-                    className="group flex items-center gap-4 rounded-2xl border border-slate-200 bg-white p-4 sm:p-5 shadow-[0_2px_12px_-4px_rgba(15,23,42,0.08)] transition-all duration-300 hover:-translate-y-1 hover:border-red-300 hover:shadow-[0_16px_40px_-16px_rgba(220,38,38,0.3)]"
+                    className="group flex items-center gap-3 sm:gap-4 rounded-2xl border border-slate-200 bg-white p-4 sm:p-5 shadow-[0_2px_12px_-4px_rgba(15,23,42,0.08)] transition-all duration-300 hover:-translate-y-1 hover:border-red-300 hover:shadow-[0_16px_40px_-16px_rgba(220,38,38,0.3)]"
                   >
-                    <span className="flex h-11 w-11 sm:h-12 sm:w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-brand to-brand-dark text-white shadow-[0_8px_24px_rgba(220,38,38,0.3)]">
-                      <c.icon className="h-5 w-5" />
+                    <span className="flex h-10 w-10 sm:h-12 sm:w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-brand to-brand-dark text-white shadow-[0_8px_24px_rgba(220,38,38,0.3)]">
+                      <c.icon className="h-4 w-4 sm:h-5 sm:w-5" />
                     </span>
                     <div className="min-w-0 flex-1">
                       <p className="font-mono text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-400">{c.label}</p>
-                      <p className="mt-0.5 sm:mt-1 text-sm sm:text-[15px] font-semibold text-slate-900 truncate">{c.value}</p>
+                      <p className="mt-0.5 sm:mt-1 text-xs sm:text-[15px] font-semibold text-slate-900 break-words">{c.value}</p>
                     </div>
                   </Wrapper>
                 </Reveal>
@@ -208,7 +210,7 @@ export default function Contact() {
 
             <Reveal delay={0.35}>
               <div className="relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-2 shadow-[0_2px_12px_-4px_rgba(15,23,42,0.08)]">
-                <img src={IMAGES.team} alt="Saachi Infosoft office" className="h-40 sm:h-44 w-full rounded-[1.2rem] object-cover" loading="lazy" />
+                <img src={IMAGES.team} alt="Saachi Infosoft office" className="h-36 sm:h-44 w-full rounded-[1.2rem] object-cover" loading="lazy" />
                 <p className="py-2.5 sm:py-3 pl-3 text-xs sm:text-sm font-medium text-slate-900">
                   Remote-first studio · Clients across 3 continents
                 </p>
@@ -218,7 +220,7 @@ export default function Contact() {
         </div>
       </section>
 
-      {/* FAQ */}
+      {/* FAQ SECTION */}
       <section className="border-t border-slate-900/[0.07] bg-white py-16 sm:py-20 lg:py-28" data-testid="faq-section">
         <div className="mx-auto grid max-w-7xl gap-10 lg:gap-12 px-4 sm:px-6 lg:grid-cols-12 lg:px-12">
           <div className="lg:col-span-5">
@@ -248,7 +250,7 @@ export default function Contact() {
               ].map((f, i) => (
                 <Reveal key={i} delay={i * 0.05}>
                   <AccordionItem value={`item-${i}`} className="border-slate-200" data-testid={`faq-item-${i}`}>
-                    <AccordionTrigger className="py-4 sm:py-5 text-left font-display text-sm sm:text-base font-semibold text-slate-900 hover:no-underline hover:text-brand">
+                    <AccordionTrigger className="py-4 sm:py-5 text-left font-display text-sm sm:text-basetext-slate-900 hover:no-underline hover:text-brand">
                       {f.q}
                     </AccordionTrigger>
                     <AccordionContent className="pb-4 sm:pb-5 text-xs sm:text-sm leading-relaxed text-slate-600">
